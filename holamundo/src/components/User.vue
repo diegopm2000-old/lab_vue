@@ -55,7 +55,9 @@ export default {
   created() {
     console.log('Componente creado'); // eslint-disable-line no-console
     this.$http.get('https://jsonplaceholder.typicode.com/users')
-      .then(res => this.users = res.body);
+      .then((res) => {
+        this.users = res.body;
+      });
   },
 };
 </script>
