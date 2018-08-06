@@ -9,12 +9,12 @@
     <div v-if="showName">
       <p>{{ fullName }}</p>
     </div>
-    <div v-else="showName">
+    <div v-else>
       <p>No puedo mostrar el nombre</p>
     </div>
     <hr>
     <ul>
-      <li v-for="task in tasks">
+      <li v-for="task in tasks" :key="task.title">
         {{ task.title }}
       </li>
     </ul>
@@ -41,34 +41,34 @@ export default {
       myHtml: '<h3>Hola vue</h3>',
       showName: true,
       tasks: [
-        { title: 'eat'},
-        { title: 'dinner'},
-        { title: 'play'},
-      ]
+        { title: 'eat' },
+        { title: 'dinner' },
+        { title: 'play' },
+      ],
     };
   },
   methods: {
     saludar(name) {
-      alert('Hola ' + name);
+      alert.log(`Hola ${name}`); // eslint-disable-line no-alert
     },
     typing(e) {
-      console.log(e.target.value);
+      console.log(e.target.value); // eslint-disable-line no-console
     },
-    enter(e) {
-      console.log('Pulsado enter!');
+    enter() {
+      console.log('Pulsado enter!'); // eslint-disable-line no-console
     },
   },
   computed: {
     fullName() {
-      return this.user.firstName + ' ' + this.user.lastName + ' generado en computed';
-    }
+      return `${this.user.firstName} ${this.user.lastName} generado en computed`;
+    },
   },
   props: {
     msg: {
       type: String,
       default: 'Mensaje por defecto',
-    }
-  }
+    },
+  },
 };
 </script>
 
